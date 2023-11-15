@@ -1,9 +1,9 @@
 import unittest
 from math_quiz import generate_random_number, generate_random_operator, generate_math_problem
 
-
+# Define a test class for the Math Quiz functions
 class TestMathGame(unittest.TestCase):
-
+    # Test the generate_random_number function
     def generate_random_number(self):
         # Test if random numbers generated are within the specified range
         min_val = 1
@@ -20,6 +20,7 @@ class TestMathGame(unittest.TestCase):
              self.assertIn(rand_operator, operator)
 
     def generate_math_problem(self):
+            # Test cases to check the correctness of generate_math_problem
             test_cases = [
                 (5, 2, '+', '5 + 2', 7),
                 (8, 6, '-', '8 - 6', 2),               
@@ -31,10 +32,17 @@ class TestMathGame(unittest.TestCase):
                 (10, 2, '/', '10 / 2', 5),  # Test with division (assuming Python 3.x behavior)
             ]
 
-            for num1, num2, operator, expected_problem, expected_answer in test_cases:
-                problem, answer = generate_math_problem(num1, num2, operator)
-                self.assertEqual(problem, expected_problem)
-                self.assertEqual(answer, expected_answer)
+           # Iterate over each test case
+for num1, num2, operator, expected_problem, expected_answer in test_cases:
+    # Generate a math problem using the generate_math_problem function
+    problem, answer = generate_math_problem(num1, num2, operator)
 
+    # Compare the generated problem with the expected problem
+    self.assertEqual(problem, expected_problem)
+
+    # Compare the generated answer with the expected answer
+    self.assertEqual(answer, expected_answer)
+
+# Run the tests if the script is executed
 if __name__ == "__main__":
     unittest.main()
