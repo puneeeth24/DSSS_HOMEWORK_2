@@ -35,6 +35,7 @@ def generate_math_problem(num1, num2, operator):
     return problem, answer
     
 def math_quiz():
+    # Initialize the score and total questions
     score = 0
     # Initially starting with one question
     total_questions = 1 
@@ -62,18 +63,21 @@ def math_quiz():
             # Continue to the next iteration of the loop (if applicable)
             continue
 
-
+        # Check user's answer and update the score
         if user_answer == correct_answer:
             print("Correct! You earned a point.")
             score += 1
             #Increment the total questions for the next iteration
             total_questions += 1
-        
+                    
+        # Display correct answer for incorrect responses and end the game
         else:
             print(f"Wrong answer. The correct answer is {correct_answer}.")
             break
-
+    
+    # Display final score
     print(f"\nGame over! Your score is: {score}/{total_questions}")
 
 if __name__ == "__main__":
+        # Run the math quiz function when the script is executed
     math_quiz()
