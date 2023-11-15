@@ -1,6 +1,5 @@
 import random
-
-
+    # defining a function to generate a random value within a range 
 def generate_random_number(min_value, max_value):
     """
     Generates a random integer within a given range
@@ -14,7 +13,7 @@ def generate_random_number(min_value, max_value):
     """
     return random.randint(min_value, max_value)
 
-
+    # defining a function to generate a random operator (+, - , *) 
 def generate_random_operator():
     """
     Generates a random arithmetic operator(,-,*) 
@@ -24,7 +23,7 @@ def generate_random_operator():
     """
     return random.choice(['+', '-', '*'])
 
-
+    # Performing arithmetic operations ( +, -, *) on two randomly generated numbers
 def generate_math_problem(num1, num2, operator):
     problem = f"{num1} {operator} {num2}"
     if operator == '+': 
@@ -34,34 +33,40 @@ def generate_math_problem(num1, num2, operator):
     else: 
         answer = num1 * num2
     return problem, answer
-
+    
 def math_quiz():
     score = 0
-    # Start with 3 questions
+    # Initially starting with one question
     total_questions = 1 
 
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
-
+    # The while loop iterates till user enters corrects answers. 
+    # After a wrong answer it exits the loop and prints (correct answers / total questions) 
     while True:
         num1 = generate_random_number(1, 10)  # calling function generate_random_number()
         num2 = generate_random_number(1, 5)   # calling function generate_random_number()
         operator = generate_random_operator() # calling function generate_random_operator()
-
-        problem, correct_answer = generate_math_problem(num1, num2, operator)
+        # calling function generate_math_problem with arguments num1, num 2, operator\
+        # store value of variable answer in correct_answer 
+        problem, correct_answer = generate_math_problem(num1, num2, operator) 
         print(f"\nQuestion: {problem}")
 
         try:
+            # Attempt to read an integer from user input
             user_answer = int(input("Your answer: "))
         except ValueError:
+            # If a ValueError occurs (e.g., the user enters a non-integer),
+            # catch the exception and handle it here
             print("Invalid input. Please enter a valid integer")
+            # Continue to the next iteration of the loop (if applicable)
             continue
 
 
         if user_answer == correct_answer:
             print("Correct! You earned a point.")
             score += 1
-            # Increment the total questions for the next iteration
+            #Increment the total questions for the next iteration
             total_questions += 1
         
         else:
